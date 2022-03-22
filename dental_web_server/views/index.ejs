@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Twitter -->
+  <!-- Meta -->
+  <meta name="author" content="ThemePixels">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="../../images/logo.png">
+
+  <title>KISA insure</title>
+
+  <!-- vendor css -->
+  <link href="../../lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="../../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
+  <!-- DashForge CSS -->
+  <link rel="stylesheet" href="../../assets/css/dashforge.css">
+  <link rel="stylesheet" href="../../assets/css/dashforge.auth.css">
+</head>
+<body>
+
+<header class="navbar navbar-header navbar-header-fixed">
+  <a href="" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
+  <div class="navbar-brand">
+    <a href="../../index.html" class="df-logo">KISA<span>Insure-Course</span></a>
+  </div><!-- navbar-brand -->
+  <div id="navbarMenu" class="navbar-menu-wrapper">
+    <div class="navbar-menu-header">
+      <a href="/" class="df-logo">dash<span>forge</span></a>
+      <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
+    </div><!-- navbar-menu-header -->
+    <ul class="nav navbar-menu">
+      <li class="nav-label pd-l-20 pd-lg-l-25 d-lg-none">Main Navigation</li>
+    </ul>
+  </div><!-- navbar-menu-wrapper -->
+  <div class="navbar-right">
+    <a href="/" class="btn btn-buy"><span>돌아가기</span></a>
+  </div><!-- navbar-right -->
+</header><!-- navbar -->
+<div class="content content-fixed content-auth-alt">
+  <div class="container ht-100p">
+    <div class="ht-100p d-flex flex-column align-items-center justify-content-center">
+      <div class="wd-150 wd-sm-250 mg-b-30"><img src="/images/logo.png" class="img-fluid" alt=""></div>
+      <h4 class="tx-20 tx-sm-24">사용자 정보 입력</h4>
+      <p class="tx-color-03 mg-b-40">사용자의 정보를 입력해 주세요</p>
+      <div class="tx-13 tx-lg-14 mg-b-40">
+        <button id="male" class="btn btn-brand-02 d-inline-flex align-items-center">남자</button>
+        <button id="female" class="btn btn-white d-inline-flex align-items-center mg-l-5">여자</button>
+      </div>
+    </div>
+    <div class="ht-100p d-flex flex-column align-items-center justify-content-center">
+      <div class="form-group">
+        <div class="d-flex justify-content-between mg-b-5">
+          <label class="mg-b-0-f">생년월일</label>
+        </div>
+        <input type="text" id="birthDay" class="form-control" placeholder="900101">
+      </div>
+      <div class="form-group">
+        <div class="d-flex justify-content-between mg-b-5">
+          <label class="mg-b-0-f">이름</label>
+        </div>
+        <input type="text" id="name" class="form-control" placeholder="홍길동">
+      </div>
+    </div>
+    <div class="ht-100p d-flex flex-column align-items-center justify-content-center">
+      <div class="row">
+        <button class="btn btn-brand-01" id="sendData">전송하기</button>
+      </div>
+    </div>
+  </div><!-- container -->
+</div><!-- content -->
+
+<footer class="footer">
+  <div>
+    <span>KISA 실습용 샘플 디자인 파일 (개인적 / 상업적 이용 불가)</span>
+    <span>Original Created by <a href="http://themepixels.me">http://themepisxels.com</a></span>
+  </div>
+  <div>
+    <nav class="nav">
+    </nav>
+  </div>
+</footer>
+
+<script src="../../lib/jquery/jquery.min.js"></script>
+<script src="../../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../lib/feather-icons/feather.min.js"></script>
+<script src="../../lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+<script src="../../assets/js/dashforge.js"></script>
+
+<!-- append theme customizer -->
+<script src="../../lib/js-cookie/js.cookie.js"></script>
+<script src="../../assets/js/dashforge.settings.js"></script>
+
+<script>
+  let name = "";
+  let birth = "";
+  let gender = 0;
+  $("#male").click(function () {
+    gender = 1;
+  })
+
+  $("#female").click(function () {
+    gender = 0;
+  })
+
+  $("#sendData").click(function () {
+    name = $("#name").val();
+    birth = $("#birthDay").val();
+    let qs = "?name="+ name +"&birth=" + birth + "&gender="+gender
+    window.location.href = "/result"+qs
+  })
+
+
+</script>
+
+</body>
+</html>

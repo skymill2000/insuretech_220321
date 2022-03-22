@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Twitter -->
+    <!-- Meta -->
+    <meta name="author" content="ThemePixels">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/logo.png">
+
+    <title>KISA insure</title>
+
+    <!-- vendor css -->
+    <link href="../../lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="../../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- DashForge CSS -->
+    <link rel="stylesheet" href="../../assets/css/dashforge.css">
+    <link rel="stylesheet" href="../../assets/css/dashforge.auth.css">
+</head>
+<body>
+
+<header class="navbar navbar-header navbar-header-fixed">
+    <a href="" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
+    <div class="navbar-brand">
+        <a href="../../index.html" class="df-logo">KISA<span>Insure-Course</span></a>
+    </div><!-- navbar-brand -->
+    <div id="navbarMenu" class="navbar-menu-wrapper">
+        <div class="navbar-menu-header">
+            <a href="/" class="df-logo">dash<span>forge</span></a>
+            <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
+        </div><!-- navbar-menu-header -->
+        <ul class="nav navbar-menu">
+            <li class="nav-label pd-l-20 pd-lg-l-25 d-lg-none">Main Navigation</li>
+        </ul>
+    </div><!-- navbar-menu-wrapper -->
+    <div class="navbar-right">
+        <a href="/" class="btn btn-buy"><span>돌아가기</span></a>
+    </div><!-- navbar-right -->
+</header><!-- navbar -->
+<div class="content content-fixed content-auth-alt">
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-md-12">
+                    <div data-label="Example" class="df-example">
+                        <div class="ht-250 ht-lg-300"><canvas id="chartBar1"></canvas></div>
+                    </div><!-- df-example -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" style="margin-bottom: 20px">보험별 상세 정보</h5>
+                            <table class="table" >
+                                <thead>
+                                <tr>
+                                    <th scope="col">보험명</th>
+                                    <th scope="col">회사</th>
+                                    <th scope="col">보장내용</th>
+                                    <th scope="col">월 납부</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tableBody">
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+
+
+
+</div><!-- content -->
+
+<footer class="footer">
+    <div>
+        <span>KISA 실습용 샘플 디자인 파일 (개인적 / 상업적 이용 불가)</span>
+        <span>Original Created by <a href="http://themepixels.me">http://themepisxels.com</a></span>
+    </div>
+    <div>
+        <nav class="nav">
+        </nav>
+    </div>
+</footer>
+
+<script src="../../lib/jquery/jquery.min.js"></script>
+<script src="../../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../lib/feather-icons/feather.min.js"></script>
+<script src="../../lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+<script src="../../assets/js/dashforge.js"></script>
+
+<!-- append theme customizer -->
+<script src="../../lib/js-cookie/js.cookie.js"></script>
+<script src="../../assets/js/dashforge.settings.js"></script>
+<script src="../lib/chart.js/Chart.bundle.min.js"></script>
+
+<script>
+    var ctxLabel = [];
+    var ctxData1 = [];
+
+    getInsureData();
+    function getInsureData() {
+        function getQueryStringObject() {
+            var a = window.location.search.substr(1).split('&');
+            if (a == "") return {};
+            var b = {};
+            for (var i = 0; i < a.length; ++i) {
+                var p = a[i].split('=', 2);
+                if (p.length == 1)
+                    b[p[0]] = "";
+                else
+                    b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+            }
+            return b;
+        }
+
+        var qs = getQueryStringObject();
+
+        $.ajax({
+            url: 'http://localhost:5000/aia',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                name : qs.name,
+                birth : qs.birth,
+                gender : qs.gender
+            },
+            success: function (data) {
+                console.log(data);
+                ctxData1.push(data.price);
+                ctxLabel.push(data.company)
+                drawChart(data);
+                drawTable(data);
+            }
+        });
+        $.ajax({
+            url: 'http://localhost:5000/lina',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                name : qs.name,
+                birth : qs.birth,
+                gender : qs.gender
+            },
+            success: function (data) {
+                console.log(data);
+                ctxData1.push(data.price);
+                ctxLabel.push(data.company)
+                drawChart(data);
+                drawTable(data);
+            }
+        });
+    }
+    
+    function drawTable(data) {
+        let contentsBody
+        for (let i = 0; i < data.contents.length; i++) {
+            const contentsElement = data.contents[i];
+            contentsBody = contentsBody + i + "\." + contentsElement + '<br>'
+        }
+        $("#tableBody").append(
+            '<tr>' +
+            '<th>치과보험</th>' +
+            '<td>'+data.company+'</td>' +
+            '<td>'+contentsBody+'</td>' +
+            '<td>'+data.price+'</td>' +
+            '</tr>'
+        )
+    }
+    
+    function drawChart(data) {
+        var ctxColor1 = '#001737';
+        var ctxColor2 = '#1ce1ac';
+        // Bar chart
+        var ctx1 = document.getElementById('chartBar1').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ctxLabel,
+                datasets: [{
+                    data: ctxData1,
+                    backgroundColor: ctxColor2
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                legend: {
+                    display: false,
+                    labels: {
+                        display: false
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            color: '#e5e9f2'
+                        },
+                        ticks: {
+                            beginAtZero:true,
+                            fontSize: 10,
+                            fontColor: '#182b49',
+                            max: 30000
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        barPercentage: 0.6,
+                        ticks: {
+                            beginAtZero:true,
+                            fontSize: 11,
+                            fontColor: '#182b49'
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>
