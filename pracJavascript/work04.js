@@ -41,6 +41,7 @@ const cars = [car, car1, car2];
 
 for (car of cars) {
   if (car.carname === "bmw") {
-    console.log("해당차량의 마력은 " + car.ph + " 입니다");
+    // console.log("해당차량의 마력은 " + car.ph + " 입니다");
+    console.log(`${car.carname}의 마력은${car.ph} 마력 입니다`);
   }
 }
