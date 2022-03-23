@@ -9,6 +9,13 @@ let car = {
   },
 };
 
-console.log(car.carname);
-console.log(car.start);
-car.start();
+// console.log(car.carname);
+// console.log(car.start);
+// car.start();
+
+// const carname = car.carname;
+// const carph = car.ph;
+
+const { carname, ph } = car;
+console.log(carname);
+console.log(ph);
