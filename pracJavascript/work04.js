@@ -38,3 +38,9 @@ const cars = [car, car1, car2];
 // if(name == ""){
 //     //상기 조건을 만족시킬때 구문 실행
 // }
+
+for (car of cars) {
+  if (car.carname === "bmw") {
+    console.log("해당차량의 마력은 " + car.ph + " 입니다");
+  }
+}
