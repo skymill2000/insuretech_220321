@@ -7,6 +7,7 @@ import ListComponent from "./components/ListComponent";
 function App() {
   return (
     <>
+      <Header title={"헤더입니다"}></Header>
       <InputTest></InputTest>
       <ListComponent></ListComponent>
     </>
