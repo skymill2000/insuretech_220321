@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import InputTest from "./components/InputTest";
 import ListComponent from "./components/ListComponent";
 import AxiosTest from "./pages/AxiosTest";
+import HospitalPage from "./pages/HospitalPage";
 import NewSearchPage from "./pages/NewSearchPage";
 import PhamacyPage from "./pages/PhamacyPage";
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/axios" element={<AxiosTest />}></Route>
         <Route path="/news" element={<NewSearchPage />}></Route>
         <Route path="/phamacy" element={<PhamacyPage />}></Route>
+        <Route path="/hospital" element={<HospitalPage />}></Route>
       </Routes>
     </BrowserRouter>
   );
