@@ -11,7 +11,9 @@ const HospitalListItemBlock = styled.div`
 
 const HospitalName = styled.div``;
 const HospitalLv = styled.div``;
-const HospitalAddress = styled.div``;
+const HospitalAddress = styled.div`
+  color: red;
+`;
 
 const HospitalListItem = ({ addr, clCd, clCdNm, yadmNm, ykiho }) => {
   const moveToHospitalDetail = () => {

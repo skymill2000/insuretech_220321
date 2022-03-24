@@ -26,7 +26,7 @@ const HospitalPage = () => {
 
     axios(option).then(function ({ data }) {
       console.log(data);
-      setHospitalList();
+      setHospitalList(data.response.body.items.item);
     });
   };
   return (
@@ -36,7 +36,7 @@ const HospitalPage = () => {
         handleChange={handleChange}
         handleClick={handleClick}
       ></SearchInput>
-      {/* <SearchResult></SearchResult> */}
+      <SearchResult hospitalList={hospitalList}></SearchResult>
       {
         //searchInput
         //searchList <- HospitalListItem

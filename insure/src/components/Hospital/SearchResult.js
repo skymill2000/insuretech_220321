@@ -1,14 +1,11 @@
 import React from "react";
+import HospitalListItem from "./HospitalListItem";
 
 const SearchResult = ({ hospitalList }) => {
   return (
     <div>
       {hospitalList.map((data, index) => {
-        return (
-          <p key={index}>
-            {data.yadmNm} {data.addr}
-          </p>
-        );
+        return <HospitalListItem addr={data.addr}></HospitalListItem>;
       })}
     </div>
   );
