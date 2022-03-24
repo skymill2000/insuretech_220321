@@ -3,8 +3,8 @@ import React from "react";
 const NewsList = ({ newsList }) => {
   return (
     <div>
-      {newsList.map((data) => {
-        return <p>{data.title}</p>;
+      {newsList.map((data, index) => {
+        return <p key={index}>{data.title}</p>;
       })}
     </div>
   );

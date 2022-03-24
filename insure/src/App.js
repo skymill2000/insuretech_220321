@@ -4,6 +4,7 @@ import InputTest from "./components/InputTest";
 import ListComponent from "./components/ListComponent";
 import AxiosTest from "./pages/AxiosTest";
 import NewSearchPage from "./pages/NewSearchPage";
+import PhamacyPage from "./pages/PhamacyPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/test2" element={<ListComponent />}></Route>
         <Route path="/axios" element={<AxiosTest />}></Route>
         <Route path="/news" element={<NewSearchPage />}></Route>
+        <Route path="/phamacy" element={<PhamacyPage />}></Route>
       </Routes>
     </BrowserRouter>
   );
