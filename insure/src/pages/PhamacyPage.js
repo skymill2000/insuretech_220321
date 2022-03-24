@@ -14,14 +14,20 @@ const PhamacyPage = () => {
   };
 
   const handleClick = () => {
-    axios
-      .get(
-        `http://apis.data.go.kr/B551182/pharmacyInfoService/getParmacyBasisList?ServiceKey=uiu3ZzNzDB04UbxOtOL1atH04WOtxB5WSKkPbaCASVHbwgcsIPwHA5Qp6xOmSe6fzCnUVifZcfTXDkgNegv4qQ==&emdongNm=방이동`
-      )
-      .then(function ({ data }) {
-        console.log(data);
-        setPhamacyList(data);
-      });
+    const option = {
+      method: "GET",
+      url: "http://apis.data.go.kr/B551182/pharmacyInfoService/getParmacyBasisList",
+      params: {
+        ServiceKey:
+          "uiu3ZzNzDB04UbxOtOL1atH04WOtxB5WSKkPbaCASVHbwgcsIPwHA5Qp6xOmSe6fzCnUVifZcfTXDkgNegv4qQ==",
+        emdongNm: searchInputText,
+      },
+    };
+
+    axios(option).then(function ({ data }) {
+      console.log(data);
+      setPhamacyList(data.response.body.items.item);
+    });
   };
   return (
     <div>
@@ -30,7 +36,7 @@ const PhamacyPage = () => {
         handleChange={handleChange}
         handleClick={handleClick}
       ></SearchInput>
-      {/* <SearchResult phamacyList={phamacyList}></SearchResult> */}
+      <SearchResult phamacyList={phamacyList}></SearchResult>
     </div>
     // 약국명과 약국 주소에대한 검색 결과를 표시 하세요
   );

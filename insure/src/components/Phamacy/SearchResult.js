@@ -4,7 +4,11 @@ const SearchResult = ({ phamacyList }) => {
   return (
     <div>
       {phamacyList.map((data, index) => {
-        return <p key={index}></p>;
+        return (
+          <p key={index}>
+            {data.yadmNm} {data.addr}
+          </p>
+        );
       })}
     </div>
   );
