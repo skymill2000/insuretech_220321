@@ -12,8 +12,6 @@ const makeAES = (plainText) => {
 //b3Bu7QBZ0q96+f2GY2NQmaT1XnZElI1+wRdSHBOY01s=
 //b3Bu7QBZ0q96+f2GY2NQmaT1XnZElI1+wRdSHBOY01s=
 
-makeAES("!Kwic123테스트");
-
 const sha256Enc = (plainText) => {
   const secret = "abcdefg";
   const hash = createHmac("sha512", secret).update(plainText).digest("base64");
@@ -53,4 +51,6 @@ const dbInsureEncrypt = () => {
   // return conBuf.toString('base64');
 };
 
-sha256Enc("qlalfqjsgh123!");
+export default {
+  makeAES,
+};
