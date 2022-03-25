@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import InputTest from "./components/InputTest";
 import ListComponent from "./components/ListComponent";
 import AxiosTest from "./pages/AxiosTest";
+import Carinfo from "./pages/Carinfo";
 import EncryptPage from "./pages/EncryptPage";
 import HospitalDetail from "./pages/HospitalDetailPage";
 import HospitalPage from "./pages/HospitalPage";
@@ -22,6 +23,7 @@ function App() {
         <Route path="/hospital" element={<HospitalPage />}></Route>
         <Route path="/hospitalDetail" element={<HospitalDetail />}></Route>
         <Route path="/encrypt" element={<EncryptPage />}></Route>
+        <Route path="/carinfo" element={<Carinfo />}></Route>
       </Routes>
     </BrowserRouter>
   );

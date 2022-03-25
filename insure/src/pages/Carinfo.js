@@ -13,7 +13,7 @@ const Carinfo = () => {
       json: {},
     };
     axios(option).then(({ data }) => {
-      console.log(data.response.body.items.item);
+      console.log(data);
     });
   };
   const handleChangeCarnum = (e) => {
