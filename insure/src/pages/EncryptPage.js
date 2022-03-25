@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
-import encrypt from "../lib/encrypt";
+import { makeAES } from "../lib/encrypt";
 
 const EncryptPage = () => {
   const [plainText, setPlainText] = useState("");
   const [encryptedText, setencryptedText] = useState("");
 
   const handleClick = () => {
-    setencryptedText(encrypt.makeAES(plainText));
+    setencryptedText(makeAES(plainText));
   };
 
   const handleChangePassword = (e) => {

@@ -1,7 +1,7 @@
 const { createCipheriv, createHmac } = require("crypto");
-const makeAES = (plainText) => {
-  const key = "H3uVnnOnNIXXsH63CsgswUsmICSCdVsn";
-  const iv = "dwUgwmwOndnJOmOX";
+export const makeAES = (plainText) => {
+  const key = "!w#wkW3AY5Tq#hGkh#UwAkq3TKk3s#36";
+  const iv = "TIEY4xGsHK5YwTqs";
   const cipher = createCipheriv("aes-256-cbc", key, iv);
   let encrypted = cipher.update(plainText, "utf8", "base64");
   encrypted += cipher.final("base64");
@@ -49,8 +49,4 @@ const dbInsureEncrypt = () => {
   // // encrypted += conBuf.toString('base64');
   // console.log(encrypted);
   // return conBuf.toString('base64');
-};
-
-export default {
-  makeAES,
 };
