@@ -7,10 +7,15 @@ const Carinfo = () => {
   const handleClick = () => {
     const option = {
       method: "POST",
-      url: "",
-      headers: {},
+      url: "https://datahub-dev.scraping.co.kr/assist/common/carzen/CarAllInfoInquiry",
+      headers: {
+        Authorization: "Token 332460548c3348109095d32b82710b518cbb318e",
+      },
       //header Token Data 추가 => object 형태로 추가
-      json: {},
+      data: {
+        REGINUMBER: carnum,
+        OWNERNAME: onwer,
+      },
     };
     axios(option).then(({ data }) => {
       console.log(data);
