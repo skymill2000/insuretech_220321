@@ -7,7 +7,7 @@ const Carinfo = () => {
   const handleClick = () => {
     const option = {
       method: "POST",
-      url: "https://datahub-dev.scraping.co.kr/assist/common/carzen/CarAllInfoInquiry",
+      url: "/assist/common/carzen/CarAllInfoInquiry",
       headers: {
         Authorization: "Token 332460548c3348109095d32b82710b518cbb318e",
       },
